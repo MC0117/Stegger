@@ -1,5 +1,6 @@
 package ops;
 import java.lang.String;
+import java.security.§
 
 public class EmbedEncryptFile {
     private void embedToFile(String message, String backgroundFile, String key){
@@ -8,6 +9,8 @@ public class EmbedEncryptFile {
         return 0;
     }
     protected String formattedMessage(String message, String key){
+
+
         return "";
     }
     protected boolean feasibilityCheck(String formattedMessage, String backgroundFile){
