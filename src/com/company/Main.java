@@ -1,4 +1,7 @@
 package com.company;
+
+import com.company.Steganography.EmbedEncryptFile.*;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -6,22 +9,33 @@ import java.lang.String;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
-public class Main {
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
+
+public class Main {
     public static void main(String[] args) {
-        //URI url = new URL();
-        String path = System.getProperty("user.dir") + "\\";
-        //BufferedReader br = new BufferedReader();
+        boolean hopEnabled = true;
+        String basePath = System.getProperty("user.dir") + "\\";
         try {
-            File f = new File(path);
+
+            File bruh = new File(basePath + "img\\bruh.png");
             System.out.println("Welcome to Stegger!!");
-            File backgroundFile = new File(path);
-            BufferedImage backgroundImage = ImageIO.read(backgroundFile);
+
+            File coverFile = new File(basePath + "img\\dog.png");
+            System.out.println(coverFile.getPath());
+
+            BufferedImage coverImg = ImageIO.read(coverFile);
             Color myColor = new Color(255,192,203);
-            backgroundImage.setRGB(0,0, myColor.getRGB());
-            //File file = new File();
+            coverImg.setRGB(0, 0, myColor.getRGB());
+
+            BufferedImage bf = Steganography.EmbedEncryptFile.embedToFile("",coverImg,"", hopEnabled);
+
+            coverImg.setRGB(0,0, myColor.getRGB());
+            ImageIO.write(coverImg,"png", bruh);
         }
         catch (Exception e){
+            System.out.println(e);
             System.out.println(e.getMessage());
         }
     }
